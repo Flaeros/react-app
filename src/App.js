@@ -14,7 +14,7 @@ class App extends Component {
       {
         id: 2,
         title: 'Learn React',
-        completed: false
+        completed: true
       }, 
       {
         id: 3,
