@@ -1,53 +1,61 @@
-import React, { Component } from 'react';
-import Todos from './components/Todos';
-import Header from './components/layout/Header'
+import React, { Component } from "react";
+import Todos from "./components/Todos";
+import Header from "./components/layout/Header";
+import AddTodo from "./components/AddTodo";
 
-import './App.css';
+import "./App.css";
 
 class App extends Component {
   state = {
     todos: [
       {
         id: 1,
-        title: 'View the course',
+        title: "View the course",
         completed: false
       },
       {
         id: 2,
-        title: 'Learn React',
+        title: "Learn React",
         completed: true
       },
       {
         id: 3,
-        title: 'Sleep',
+        title: "Sleep",
         completed: false
       }
     ]
-  }
+  };
 
   //Toggle Complete
-  markComplete = (id) => {
+  markComplete = id => {
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.id === id) {
-          todo.completed = !todo.completed
+          todo.completed = !todo.completed;
         }
-        return todo
+        return todo;
       })
-    })
-  }
+    });
+  };
 
-  delTodo = (id) => {
+  delTodo = id => {
     this.setState({
       todos: [...this.state.todos.filter(todo => todo.id !== id)]
-    })
-  }
+    });
+  };
 
   render() {
     return (
-      <div className="App" >
-        <Header/>
-        <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
+      <div className="App">
+        <div className="containter">
+          <Header />
+          <AddTodo />
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            delTodo={this.delTodo}
+          />
+        </div>
       </div>
     );
   }
